@@ -6,7 +6,7 @@
 /*   By: lmedrano <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:05:40 by lmedrano          #+#    #+#             */
-/*   Updated: 2024/01/19 15:12:50 by lmedrano         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:16:13 by lmedrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,50 @@
 
 std::string	Contact::getFirstName() const
 {
-	return (this->FirstName);
+	return (this->_FirstName);
 }
 
 std::string	Contact::getLastName() const
 {
-	return (this->LastName);
+	return (this->_LastName);
 }
 
 std::string	Contact::getNickName() const
 {
-	return (this->Nickname);
+	return (this->_Nickname);
 }
 
-int	Contact::getPhoneNumber() const
+std::string	Contact::getPhoneNumber() const
 {
-	return (this->PhoneNumber);
+	return (this->_PhoneNumber);
 }
 
 std::string	Contact::getSecret() const
 {
-	return (this->DarkestSecret);
+	return (this->_DarkestSecret);
+}
+
+void	Contact::setFirstName(std::string firstName)
+{
+	this->_FirstName = firstName;
+}
+
+void	Contact::setLastName(std::string lastName)
+{
+	this->_LastName = lastName;
+}
+
+void	Contact::setNickName(std::string nickname)
+{
+	this->_Nickname = nickname;
+}
+
+void	Contact::setPhoneNumber(std::string phoneNumber)
+{
+	this->_PhoneNumber = phoneNumber;
+}
+
+void	Contact::setSecret(std::string darkestSecret)
+{
+	this->_DarkestSecret = darkestSecret;
 }

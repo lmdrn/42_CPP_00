@@ -6,7 +6,7 @@
 /*   By: lmedrano <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 20:06:50 by lmedrano          #+#    #+#             */
-/*   Updated: 2024/01/22 15:18:00 by lmedrano         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:58:35 by lmedrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,16 @@
 
 class PhoneBook
 {
+	public:
+		/* -- Constructor -- */
+		PhoneBook();
+		/* -- Destructor -- */
+		~PhoneBook();
+		void	addContact();
+		void	searchContact();
 	private:
 		Contact	_contacts[8];
-	public:
-		void	setContact();
-		void	setEraseExit();
-		void	getContact() const;
+		int		_index;
 };
-
-void	PhoneBook::setContact()
-{}
-
-void	PhoneBook::setEraseExit()
-{}
-
-void	PhoneBook::getContact() const
-{}
 
 #endif

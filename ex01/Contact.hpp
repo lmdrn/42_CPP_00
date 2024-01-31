@@ -6,7 +6,7 @@
 /*   By: lmedrano <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:00:16 by lmedrano          #+#    #+#             */
-/*   Updated: 2024/01/22 15:17:21 by lmedrano         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:18:32 by lmedrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,24 @@ class Contact
 		std::string	_PhoneNumber;
 		std::string	_DarkestSecret;
 	public:
+		/* -- Constructor -- */
+		Contact();
+		/* -- Destructor -- */
+		~Contact();
+
+		/* -- Getter -- */
 		std::string	getFirstName(void) const;
 		std::string	getLastName(void) const;
 		std::string	getNickName(void) const;
 		std::string	getPhoneNumber(void) const;
 		std::string	getSecret(void) const;
+
+		/* -- Setter -- */
+		void		setFirstName(std::string str);
+		void		setLastName(std::string str);
+		void		setNickName(std::string str);
+		void		setPhoneNumber(std::string str);
+		void		setSecret(std::string str);
 };
 
 #endif
