@@ -6,7 +6,7 @@
 /*   By: lmedrano <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:00:16 by lmedrano          #+#    #+#             */
-/*   Updated: 2024/01/31 17:18:32 by lmedrano         ###   ########.fr       */
+/*   Updated: 2024/02/08 13:23:02 by lmedrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ class Contact
 		Contact();
 		/* -- Destructor -- */
 		~Contact();
-
 		/* -- Getter -- */
 		std::string	getFirstName(void) const;
 		std::string	getLastName(void) const;

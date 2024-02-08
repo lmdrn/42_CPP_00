@@ -6,11 +6,19 @@
 /*   By: lmedrano <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:05:40 by lmedrano          #+#    #+#             */
-/*   Updated: 2024/01/31 17:16:13 by lmedrano         ###   ########.fr       */
+/*   Updated: 2024/02/08 13:22:35 by lmedrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+
+Contact::Contact(void)
+{
+}
+
+Contact::~Contact(void)
+{
+}
 
 std::string	Contact::getFirstName() const
 {
