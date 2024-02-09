@@ -6,7 +6,7 @@
 /*   By: lmedrano <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 20:06:50 by lmedrano          #+#    #+#             */
-/*   Updated: 2024/02/08 18:29:36 by lmedrano         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:39:07 by lmedrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class PhoneBook
 	private:
 		Contact	_contacts[8];
 		int		_index;
+		void	truncateStr(std::string str) const;
 };
 
 #endif

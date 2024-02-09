@@ -6,7 +6,7 @@
 #    By: lmedrano <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 19:45:26 by lmedrano          #+#    #+#              #
-#    Updated: 2024/02/08 13:36:22 by lmedrano         ###   ########.fr        #
+#    Updated: 2024/02/09 12:27:36 by lmedrano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ ORANGE 		= \033[38;5;215m
 GREEN 		= \033[38;5;82m
 RESET 		= \033[0m
 
-SRCS 		= PhoneBook.cpp Contact.cpp main.cpp
+SRCS 		= PhoneBook.cpp Contact.cpp CleanStr.cpp main.cpp
 
 OBJS 		= ${SRCS:.c=.o}
 

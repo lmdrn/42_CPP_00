@@ -6,14 +6,15 @@
 /*   By: lmedrano <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 20:06:18 by lmedrano          #+#    #+#             */
-/*   Updated: 2024/02/08 18:44:04 by lmedrano         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:32:51 by lmedrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+#include "CleanStr.hpp"
 
-PhoneBook::PhoneBook(void)
+PhoneBook::PhoneBook(void) : _index(0)
 {
 }
 
@@ -27,49 +28,6 @@ PhoneBook::~PhoneBook(void)
 	std::cout << "                                 " << std::endl;
 	std::cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" << std::endl;
 	std::cout << "                                 " << std::endl;
-}
-
-int	only_alpha(std::string str)
-{
-	int		i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!std::isalpha(str[i]) && str[i] != ' ' && str[i] != '\t')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	only_digit(std::string str)
-{
-	int		i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!std::isdigit(str[i]) && str[i] != ' ' && str[i] != '\t')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-void	removeSpaces(std::string str)
-{
-	std::string res;
-	int			i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] != ' ')
-			res += str[i];
-		i++;
-	}
-	str = res;
 }
 
 void	PhoneBook::addContact()
@@ -162,11 +120,27 @@ void	PhoneBook::addContact()
 			flag = 0;
 		}
 	}
-	this->_contacts[this->_index] = contact;
-	this->_index++;
+	if (_index == 8)
+	{
+    	this->_contacts[7] = contact;
+		_index = 8;
+	}
+	else
+	{
+   		this->_contacts[_index] = contact;
+		this->_index++;
+	}
 	std::cout << "                                        " << std::endl;
 	std::cout << "----- Contact created ! -----" << std::endl;
 	std::cout << "                                        " << std::endl;
+}
+
+void	PhoneBook::truncateStr(std::string str) const
+{
+	if (str.length() < 11)
+		std::cout << std::setw(10) << str.substr(0, 10) << "|";
+	else if (str.length() > 10)
+		std::cout << std::setw(10) << str.substr(0, 9) + '.' << "|";
 }
 
 void	PhoneBook::showSingleContact()
@@ -192,13 +166,19 @@ void	PhoneBook::showSingleContact()
 		{
 			if (strToInt == index)
 			{
+				std::cout << "           " << std::endl;
+				std::cout << "----- Contact Details -----" << std::endl;
+				std::cout << "           " << std::endl;
 				std::cout << std::setw(10) << strToInt <<  "|";
-				std::cout << std::setw(10) << this->_contacts[strToInt - 1].getFirstName().substr(0, 10) + '.' << "|";
-				std::cout << std::setw(10) << this->_contacts[strToInt - 1].getLastName().substr(0, 10) + '.' << "|";
-				std::cout << std::setw(10) << this->_contacts[strToInt - 1].getNickName().substr(0, 10) + '.' << "|";
-				std::cout << std::setw(10) << this->_contacts[strToInt - 1].getPhoneNumber().substr(0, 10) + '.' << "|";
-				std::cout << std::setw(10) << this->_contacts[strToInt - 1].getSecret().substr(0, 10) + '.' << "|";
+				truncateStr(_contacts[strToInt - 1].getFirstName());
+				truncateStr(_contacts[strToInt - 1].getLastName());
+				truncateStr(_contacts[strToInt - 1].getNickName());
+				truncateStr(_contacts[strToInt - 1].getPhoneNumber());
+				truncateStr(_contacts[strToInt - 1].getSecret());
 				std::cout << std::setw(10) << "" <<  std::endl;
+				std::cout << "           " << std::endl;
+				std::cout << "----- End of Contact Details -----" << std::endl;
+				std::cout << "           " << std::endl;
 			}
 			index++;
 		}	
@@ -206,9 +186,9 @@ void	PhoneBook::showSingleContact()
 	else
 	{
 		std::cout << "           " << std::endl;
-		std::cout << "-- ERROR --" << std::endl;
+		std::cout << "----- ERROR -----" << std::endl;
 		std::cout << "           " << std::endl;
-		std::cout << "Index should be withing 1 to 8 range" << std::endl;
+		std::cout << "Index should be within 1 to 8 range" << std::endl;
 		std::cout << "           " << std::endl;
 		return ;
 	}		
@@ -228,6 +208,9 @@ void	PhoneBook::searchContact()
 		std::cout << "                          " << std::endl;
 		return ;
 	}
+	std::cout << "           " << std::endl;
+	std::cout << "---------- YOUR PHONEBOOK CONTACTS ----------" << std::endl;
+	std::cout << "           " << std::endl;
 	std::cout << std::setw(10) << "Index" <<  "|";
 	std::cout << std::setw(10) << "First Name" <<  "|";
 	std::cout << std::setw(10) << "Last Name" <<  "|";
@@ -237,9 +220,9 @@ void	PhoneBook::searchContact()
 	while (i < this->_index)
 	{
 		std::cout << std::setw(10) << i + 1 <<  "|";
-		std::cout << std::setw(10) << this->_contacts[i].getFirstName().substr(0, 10) + '.' << "|";
-		std::cout << std::setw(10) << this->_contacts[i].getLastName().substr(0, 10) + '.' << "|";
-		std::cout << std::setw(10) << this->_contacts[i].getNickName().substr(0, 10) + '.' << "|";
+		truncateStr(_contacts[i].getFirstName());
+		truncateStr(_contacts[i].getLastName());
+		truncateStr(_contacts[i].getNickName());
 		std::cout << std::setw(10) << "" <<  std::endl;
 		i++;
 	}
